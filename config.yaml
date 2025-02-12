@@ -11,7 +11,20 @@ dotfiles:
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
+  f_config:
+    src: config/ghostty/config
+    dst: ~/.config/ghostty/config
+  f_gnome-settings.ini:
+    src: config/gnome-settings.ini
+    dst: ~/.config/gnome-settings.ini
+    postinstall: "dconf load / < ~/.config/gnome-settings.ini"
 profiles:
   fedora:
     dotfiles:
     - f_zshrc
+    - f_bashrc
+    - f_config
+    - f_gnome-settings.ini
