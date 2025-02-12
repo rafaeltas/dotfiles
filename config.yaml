@@ -23,6 +23,13 @@ dotfiles:
   f_flatpak_installer_apps.sh:
     src: config/flatpak_installer_apps.sh
     dst: ~/.config/flatpak_installer_apps.sh
+    chmod: '755'
+  f_settings.json:
+    src: config/ulauncher/settings.json
+    dst: ~/.config/ulauncher/settings.json
+  f_catppuccin.lua:
+    src: config/nvim/lua/plugins/catppuccin.lua
+    dst: ~/.config/nvim/lua/plugins/catppuccin.lua
 profiles:
   fedora:
     dotfiles:
@@ -32,6 +39,8 @@ profiles:
     - f_gnome-settings.ini
 
     - f_flatpak_installer_apps.sh
+    - f_settings.json
+    - f_catppuccin.lua
 actions:
   postinstall:
     cmd: ~/.config/flatpak_installer_apps.sh
