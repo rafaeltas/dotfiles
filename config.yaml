@@ -30,6 +30,9 @@ dotfiles:
   f_catppuccin.lua:
     src: config/nvim/lua/plugins/catppuccin.lua
     dst: ~/.config/nvim/lua/plugins/catppuccin.lua
+  f_dap.lua:
+    src: config/nvim/lua/plugins/dap.lua
+    dst: ~/.config/nvim/lua/plugins/dap.lua
 profiles:
   fedora:
     dotfiles:
@@ -41,6 +44,7 @@ profiles:
     - f_flatpak_installer_apps.sh
     - f_settings.json
     - f_catppuccin.lua
+    - f_dap.lua
 actions:
   postinstall:
     cmd: ~/.config/flatpak_installer_apps.sh
