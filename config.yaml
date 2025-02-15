@@ -1,3 +1,9 @@
+actions:
+  pre:
+    flatpak_install: ~/.config/flatpak_installer_apps.sh
+    gnome_restore:
+      cmd: dconf load / < ~/.config/gnome-settings.ini
+
 config:
   backup: true
   banner: true
@@ -49,10 +55,3 @@ profiles:
     - f_catppuccin.lua
     - f_dap.lua
     - f_aliases
-actions:
-  postinstall:
-    cmd: ~/.config/flatpak_installer_apps.sh
-    descr: Instalar aplicativos Flatpak após a configuração dos dotfiles
-  gnome_restore:
-    cmd: dconf load / < ~/.config/gnome-settings.ini
-    descr: Restaurando configurações do GNOME
