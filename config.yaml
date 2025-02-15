@@ -1,9 +1,6 @@
 actions:
   pre:
     flatpak_install: ~/.config/flatpak_installer_apps.sh
-    gnome_restore:
-      cmd: dconf load / < ~/.config/gnome-settings.ini
-
 config:
   backup: true
   banner: true
@@ -55,3 +52,5 @@ profiles:
     - f_catppuccin.lua
     - f_dap.lua
     - f_aliases
+    actions:
+    - flatpak_install
