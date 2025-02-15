@@ -39,16 +39,20 @@ apps=(
   "dev.bragefuglseth.Keypunch"
 )
 
-pids=()
-
+# Verifica quais apps já estão instalados e instala apenas os que faltam
+to_install=()
 for app in "${apps[@]}"; do
-  flatpak install -y flathub "$app" & # Roda em background
-  pids+=($!)                          # Guarda o ID do processo
+  if ! flatpak info "$app" &>/dev/null; then
+    to_install+=("$app")
+  fi
 done
 
-# Espera todos os processos finalizarem
-for pid in "${pids[@]}"; do
-  wait "$pid"
-done
+# Se houver apps para instalar, roda o comando
+if [ ${#to_install[@]} -gt 0 ]; then
+  echo "Instalando os seguintes Flatpaks: ${to_install[*]}"
+  flatpak install -y flathub "${to_install[@]}"
+else
+  echo "Todos os Flatpaks já estão instalados!"
+fi
 
-echo "Todas as instalações foram concluídas!"
+echo "Instalação concluída!"

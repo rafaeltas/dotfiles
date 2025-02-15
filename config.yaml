@@ -1,6 +1,7 @@
 actions:
   pre:
-    flatpak_install: ~/.config/flatpak_installer_apps.sh
+    set_permissions: "bash -c 'chmod +x ~/dotfiles/dotfiles/config/flatpak_installer_apps.sh'"
+    flatpak_install: ~/dotfiles/dotfiles/config/flatpak_installer_apps.sh
 config:
   backup: true
   banner: true
