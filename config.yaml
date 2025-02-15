@@ -54,4 +54,5 @@ profiles:
     - f_dap.lua
     - f_aliases
     actions:
+    - set_permissions
     - flatpak_install
