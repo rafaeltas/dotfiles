@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Lista de apps a instalar
 apps=(
   "org.gimp.GIMP"
   "app.drey.Dialect"
@@ -23,7 +24,6 @@ apps=(
   "nl.hjdskes.gcolor3"
   "org.blender.Blender"
   "org.duckstation.DuckStation"
-  "org.gimp.GIMP"
   "org.gnome.Solanum"
   "org.gnome.gitlab.YaLTeR.VideoTrimmer"
   "org.godotengine.Godot"
@@ -39,20 +39,30 @@ apps=(
   "dev.bragefuglseth.Keypunch"
 )
 
-# Verifica quais apps já estão instalados e instala apenas os que faltam
+# Verifica quais apps já estão instalados e cria um array com os que faltam
 to_install=()
 for app in "${apps[@]}"; do
-  if ! flatpak info "$app" &>/dev/null; then
-    to_install+=("$app")
-  fi
+  flatpak info "$app" &>/dev/null || to_install+=("$app") &  # Check assíncrono
 done
 
-# Se houver apps para instalar, roda o comando
+# Espera todos os processos do loop acima terminarem
+wait
+
+# Se houver Flatpaks para instalar, instala cada um em paralelo
 if [ ${#to_install[@]} -gt 0 ]; then
   echo "Instalando os seguintes Flatpaks: ${to_install[*]}"
-  flatpak install -y flathub "${to_install[@]}"
+  pids=()
+  for app in "${to_install[@]}"; do
+    flatpak install -y flathub "$app" &  # Instalação assíncrona
+    pids+=($!)  # Guarda o ID do processo
+  done
+
+  # Espera todas as instalações finalizarem
+  for pid in "${pids[@]}"; do
+    wait "$pid"
+  done
+
+  echo "Todas as instalações foram concluídas!"
 else
   echo "Todos os Flatpaks já estão instalados!"
 fi
-
-echo "Instalação concluída!"
