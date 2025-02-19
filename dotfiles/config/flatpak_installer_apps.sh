@@ -39,30 +39,20 @@ apps=(
   "dev.bragefuglseth.Keypunch"
 )
 
-# Verifica quais apps já estão instalados e cria um array com os que faltam
+# Verifica quais apps já estão instalados e instala apenas os que faltam
 to_install=()
 for app in "${apps[@]}"; do
-  flatpak info "$app" &>/dev/null || to_install+=("$app") &  # Check assíncrono
+  if ! flatpak info "$app" &>/dev/null; then
+    to_install+=("$app")
+  fi
 done
 
-# Espera todos os processos do loop acima terminarem
-wait
-
-# Se houver Flatpaks para instalar, instala cada um em paralelo
+# Se houver apps para instalar, roda o comando
 if [ ${#to_install[@]} -gt 0 ]; then
   echo "Instalando os seguintes Flatpaks: ${to_install[*]}"
-  pids=()
-  for app in "${to_install[@]}"; do
-    flatpak install -y flathub "$app" &  # Instalação assíncrona
-    pids+=($!)  # Guarda o ID do processo
-  done
-
-  # Espera todas as instalações finalizarem
-  for pid in "${pids[@]}"; do
-    wait "$pid"
-  done
-
-  echo "Todas as instalações foram concluídas!"
+  flatpak install -y flathub "${to_install[@]}"
 else
   echo "Todos os Flatpaks já estão instalados!"
 fi
+
+echo "Instalação concluída!"
