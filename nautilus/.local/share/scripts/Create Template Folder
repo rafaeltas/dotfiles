@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Lista das pastas a serem criadas
+PASTAS=("Sources" "Textures" "Blender")
+
+# Para cada item selecionado no Nautilus
+for ARQUIVO in "$@"; do
+  # Verifica se é uma pasta
+  if [ -d "$ARQUIVO" ]; then
+    for PASTA in "${PASTAS[@]}"; do
+      mkdir -p "$ARQUIVO/$PASTA"
+    done
+    notify-send "Pastas criadas em: $ARQUIVO" "${PASTAS[*]}"
+  else
+    notify-send "Selecione uma pasta" "O item '$ARQUIVO' não é uma pasta."
+  fi
+done
