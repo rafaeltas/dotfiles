@@ -13,7 +13,7 @@ return {
                     ---{ section = "keys", gap = 1, padding = 1, height = 16 },
                     {
                         section = "terminal",
-                        cmd = "ascii-image-converter /home/rafaeltas/.config/nvim/pinguista.png -c -C",
+                        cmd = "ascii-image-converter $HOME/.config/nvim/pinguista.png -c -C",
                         ---random = 10,
                         pane = 2,
                         height = 30,
