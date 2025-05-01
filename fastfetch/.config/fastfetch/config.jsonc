@@ -10,10 +10,10 @@
     //    "4": "blue",
     //    "5": "green"
     //}
-    "source": "~/.config/fastfetch/archpuccinn.png",
+    "source": "~/.config/fastfetch/fedorapuccinn.png",
     "type": "kitty",
     "height": 16,
-    "width": 34,
+    "width": 36,
     "padding": {
       "top": 4,
       "left": 4
