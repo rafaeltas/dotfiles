@@ -1,4 +1,4 @@
 alias ff='fastfetch'
-alias ue='/home/rafaeltas/Applications/UE/Linux_Unreal_Engine_5.5.4/Engine/Binaries/Linux/UnrealEditor'
+alias ue='$HOME/Applications/UE/Linux_Unreal_Engine_5.5.4/Engine/Binaries/Linux/UnrealEditor'
 alias yz='yazi'
 alias gg='exit'
