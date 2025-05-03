@@ -1,0 +1,34 @@
+Deform ▸ Shrinkwrap
+   M_Ogre
+Generate ▸ Triangulate
+   M_Rock_02.001
+   M_Concrete
+Converter ▸ Math
+Texture ▸ Noise Texture
+Vector ▸ Vector Curves
+Converter ▸ Float Curve
+Vector ▸ Normal Map
+Converter ▸ Color Ramp
+Normals ▸ Smooth by Angle
+Mesh ▸ Monkey
+  BSurfaceMesh
+Normal Map ▸ Strength
+Mask ▸ Mask Extract
+Add ▸ Text
+Generate ▸ Solidify
+Layout ▸ Reroute
+Generate ▸ Mirror
+Mesh ▸ Cylinder
+Converter ▸ Separate XYZ
+Converter ▸ Separate Color
+Mesh ▸ Cube
+Generate ▸ Bevel
+Normals ▸ Weighted Normal
+Input ▸ RGB
+Color ▸ Mix Color
+   T_Grass_01_Base.png
+   T_Cliff_01_Base.png
+Generate ▸ Boolean
+   M_Ogre_Base.png
+Shader ▸ Principled BSDF
+Mesh ▸ Plane
